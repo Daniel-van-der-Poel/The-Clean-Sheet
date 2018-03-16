@@ -12,4 +12,4 @@ To change the layout:
   
 I'm no longer working on this sheet, *so feel free to edit it, fork it etc*. Have fun!
 
-Please realise this was my first applied coding, ever.
+And please realise this was my first applied coding, ever.
