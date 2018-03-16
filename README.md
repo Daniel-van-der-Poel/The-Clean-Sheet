@@ -14,7 +14,8 @@ I'm no longer working on this sheet, *so feel free to edit it, fork it etc*. Hav
 
 And please realise this was my first applied coding, ever.
 
-*How to use this sheet*
+
+*The following was copied from http://www.enworld.org/forum/showthread.php?396488-The-Clean-Sheet*
 
 The Clean Sheet is a 5th Edition character sheet that can be used both as a digital and as a physical sheet. It's compact (two pages can be enough), easy to use, flexible, and uncluttered. This post will help you get the most out of the sheet.
 
