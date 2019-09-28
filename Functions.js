@@ -2339,7 +2339,6 @@ function popSpellbook(className, spellMin, spellMax, start) {
 	spellMax = Number(spellMax);
 	var temp = "";
 
-
 	//popping the spells
 
 	for (spellLevel = spellMin; spellLevel < spellMax + 1; spellLevel++) { //from min to max spell level
@@ -2348,14 +2347,20 @@ function popSpellbook(className, spellMin, spellMax, start) {
 		} else {
 			popSpell(spellLevelList[spellLevel] + " " + classList[className].name + " spells")
 		}
-
-		for (spell in spellList) {
+		
+		Object.keys(spellList).forEach(function(key, index) {
+				temp = spellList[key];
+				if (temp.classes.indexOf(className) > -1 && temp.level === spellLevel) { //check if class and level match input
+				popSpell(temp.name);
+			}
+		}, spellList);
+		/*for (spell in spellList) {
 			temp = spellList[spell];
 
 			if (temp.classes.indexOf(className) > -1 && temp.level === spellLevel) { //check if class and level match input
 				popSpell(temp.name);
 			}
-		}
+		}*/
 	}
 }
 
@@ -2745,6 +2750,8 @@ function setMenu() {
 
 	spellMenu = {cName: "Add spells", oSubMenu: []};
 
+	
+			
 	for (key in main.spellcaster) {
 		temp = classList[key];
 		tempSpell = "";
@@ -2767,14 +2774,19 @@ function setMenu() {
 
 			spellSubArray.push({cName: "-", cReturn: "-"});
 
-			for (spell in spellList) {
+			/*for (spell in spellList) {
 				tempSpell = spellList[spell];
 
 				if (tempSpell.level === i && tempSpell.classes.indexOf(key) > -1) {
 					spellSubArray.push({cName: tempSpell.name, cReturn: key + ":singlespell:" + spell});
 				}
-			}
-
+			}*/
+			Object.keys(spellList).forEach(function(key2, index) {
+				tempSpell = spellList[key2];
+				if (tempSpell.level === i && tempSpell.classes.indexOf(key) > -1) {
+					spellSubArray.push({cName: tempSpell.name, cReturn: key + ":singlespell:" + spell});
+				}
+			}, spellList);
 			if (i === 0) {
 				spellArray.push({cName: "Cantrips", cReturn: key + ":" + i, oSubMenu: spellSubArray});
 			} else {
@@ -2782,6 +2794,7 @@ function setMenu() {
 			}
 		}
 		spellMenu.oSubMenu.push({cName: classList[key].name, oSubMenu: spellArray});
+
 	}
 
 	mainMenu.push(itemMenu);
